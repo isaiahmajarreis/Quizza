@@ -5,4 +5,10 @@
     <string name="options">Options</string>
     <string name="exit">Exit</string>
     <string name="help">\?</string>
+    <string name="sound_effects">Sound Effects</string>
+    <string name="background_music">Background Music</string>
+    <string name="audio_settings">Audio Settings</string>
+    <string name="email">name@email.com</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Log Out</string>
 </resources>

@@ -15,5 +15,7 @@ class OptionsActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Options"
+
+        // TODO: logout dialog alert ("Are you sure you want to log out?")
     }
 }

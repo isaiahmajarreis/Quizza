@@ -4,7 +4,9 @@ import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.PopupWindow
 import com.mobdeve.majarreisroncal.quizza.databinding.ActivityMainMenuBinding
+import kotlin.system.exitProcess
 
 class MainMenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainMenuBinding
@@ -19,11 +21,25 @@ class MainMenuActivity : AppCompatActivity() {
         var backgroundMp = MediaPlayer.create(this, R.raw.bg)
         backgroundMp.start()
 
+        binding.btnStats.setOnClickListener {
+            // TODO: modal for stats
+        }
+
         binding.btnOptions.setOnClickListener {
             var clickMp = MediaPlayer.create(this, R.raw.buttonclick)
             clickMp.start()
             val goToOptions = Intent(this, OptionsActivity::class.java)
             startActivity(goToOptions)
+        }
+
+        binding.btnHelp.setOnClickListener {
+            val goToHelp = Intent(this, HelpActivity::class.java)
+            startActivity(goToHelp)
+        }
+
+        binding.btnExit.setOnClickListener {
+            moveTaskToBack(true)
+            exitProcess(-1)
         }
     }
 }
