@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             val backgroundMp = MediaPlayer.create(this, R.raw.bg)
             backgroundMp.start()
+            backgroundMp.isLooping = true
 
             val goToMainMenu = Intent(this, MainMenuActivity::class.java)
             startActivity(goToMainMenu)
