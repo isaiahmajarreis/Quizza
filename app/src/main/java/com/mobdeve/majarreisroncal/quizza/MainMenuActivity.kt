@@ -38,6 +38,7 @@ class MainMenuActivity : AppCompatActivity() {
         }
 
         binding.btnExit.setOnClickListener {
+            // TODO: dialog popup alert on click ("Are you sure you want to exit the game?")
             moveTaskToBack(true)
             exitProcess(-1)
         }

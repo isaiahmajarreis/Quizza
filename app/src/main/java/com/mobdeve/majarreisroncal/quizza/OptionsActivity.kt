@@ -13,6 +13,7 @@ class OptionsActivity : AppCompatActivity() {
         binding = ActivityOptionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // TODO: back button for the action bar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Options"
 

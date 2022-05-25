@@ -11,4 +11,6 @@
     <string name="email">name@email.com</string>
     <string name="profile">Profile</string>
     <string name="logout">Log Out</string>
+    <string name="how_to_play">How to play?</string>
+    <string name="instructions">Quizza is a time-based trivia game. Within 60 seconds, you must answer as many questions correctly as possible by tapping on the option you think is correct.\n\nEach correct answer will award you a point. If you get the answer wrong, you will get no points and the question will be skipped.\n\nGot it? Then let’s play! :D</string>
 </resources>
