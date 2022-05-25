@@ -15,11 +15,7 @@ class MainMenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         supportActionBar?.hide()
-
-        var backgroundMp = MediaPlayer.create(this, R.raw.bg)
-        backgroundMp.start()
 
         binding.btnPlay.setOnClickListener {
             val goToPlay = Intent(this, PlayActivity::class.java)

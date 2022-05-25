@@ -1,6 +1,7 @@
 package com.mobdeve.majarreisroncal.quizza
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -14,10 +15,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         supportActionBar?.hide()
 
         Handler(Looper.getMainLooper()).postDelayed({
+            val backgroundMp = MediaPlayer.create(this, R.raw.bg)
+            backgroundMp.start()
+
             val goToMainMenu = Intent(this, MainMenuActivity::class.java)
             startActivity(goToMainMenu)
         }, 5000)
