@@ -21,6 +21,11 @@ class MainMenuActivity : AppCompatActivity() {
         var backgroundMp = MediaPlayer.create(this, R.raw.bg)
         backgroundMp.start()
 
+        binding.btnPlay.setOnClickListener {
+            val goToPlay = Intent(this, PlayActivity::class.java)
+            startActivity(goToPlay)
+        }
+
         binding.btnStats.setOnClickListener {
             // TODO: modal for stats
         }
