@@ -152,8 +152,8 @@ class PlayActivity : AppCompatActivity() {
             radio.setBackgroundResource(R.drawable.button_green)
         }
         else{
-           radio.setBackgroundResource(R.drawable.button_play)
-            }
+           radio.setBackgroundResource(R.drawable.button_wrong)
+        }
         radio.isEnabled = false
     }
 
