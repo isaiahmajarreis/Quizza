@@ -1,5 +1,6 @@
 package com.mobdeve.majarreisroncal.quizza
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -40,14 +41,11 @@ class PlayActivity : AppCompatActivity() {
 
         getQnA(this)
 
-/*
         Handler(Looper.getMainLooper()).postDelayed({
             val goToScore = Intent(this, ScoreActivity::class.java)
             goToScore.putExtra("score", score)
             startActivity(goToScore)
-        }, 3000)
-
- */
+        }, 10000)
     }
 
     fun answerClicked(view : View)

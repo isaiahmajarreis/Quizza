@@ -7,6 +7,51 @@
     tools:context=".MainMenuActivity"
     android:background="@color/yellow">
 
+    <ImageView
+        android:id="@+id/iv_pizza"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/pizza"
+        android:contentDescription="@string/pizza_desc"
+        tools:ignore="MissingConstraints"
+         />
+
+    <ImageView
+        android:id="@+id/iv_burger"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/burger"
+        android:contentDescription="@string/burger_desc"
+        tools:ignore="MissingConstraints"
+        />
+
+    <ImageView
+        android:id="@+id/iv_drink"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/drink"
+        android:contentDescription="@string/drink_desc"
+        tools:ignore="MissingConstraints"
+        />
+
+    <ImageView
+        android:id="@+id/iv_hotdog"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/hotdog"
+        android:contentDescription="@string/hotdog_desc"
+        tools:ignore="MissingConstraints"
+        />
+
+    <ImageView
+        android:id="@+id/iv_sauce"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/sauce"
+        android:contentDescription="@string/pizza_desc"
+        tools:ignore="MissingConstraints"
+        />
+
     <TextView
         android:id="@+id/tv_app_name"
         android:layout_width="match_parent"
