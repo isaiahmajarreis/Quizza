@@ -26,11 +26,12 @@ class MainMenuActivity : AppCompatActivity() {
     private val height = Resources.getSystem().displayMetrics.heightPixels
 
     // speed
-    var pizzaSpeed = (5..10).random().toFloat()
-    var burgerSpeed = (5..10).random().toFloat()
-    var drinkSpeed = (5..10).random().toFloat()
-    var sauceSpeed = (5..10).random().toFloat()
-    var hotdogSpeed = (5..10).random().toFloat()
+    var mushroomSpeed = (5..10).random().toFloat()
+    var tomatoSpeed = (5..10).random().toFloat()
+    var bellPepperSpeed = (5..10).random().toFloat()
+    var onionSpeed = (5..10).random().toFloat()
+    var cheeseSpeed = (5..10).random().toFloat()
+    var pepperoniSpeed = (5..10).random().toFloat()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,11 +43,38 @@ class MainMenuActivity : AppCompatActivity() {
         val clickMp = MediaPlayer.create(this, R.raw.buttonclick)
 
         // initial positions
-        binding.ivPizza.x = -90.0f
-        binding.ivBurger.x = -90.0f
-        binding.ivDrink.x = -90.0f
-        binding.ivSauce.x = -90.0f
-        binding.ivHotdog.x = -90.0f
+        val rand = (0..1).random()
+
+        binding.ivMushroom.x = -90f
+        binding.ivTomato.x = -90f
+        binding.ivBellPepper.x = -90f
+        binding.ivOnion.x = -90f
+        binding.ivCheese.x = -90f
+        binding.ivPepperoni.x = -90f
+
+        binding.ivMushroom.y = -90f
+        binding.ivTomato.y = -90f
+        binding.ivBellPepper.y = -90f
+        binding.ivOnion.y = -90f
+        binding.ivCheese.y = -90f
+        binding.ivPepperoni.y = -90f
+
+        if(rand == 0) {
+            binding.ivMushroom.x = (-90..width).random().toFloat()
+            binding.ivTomato.x = (-90..width).random().toFloat()
+            binding.ivBellPepper.x = (-90..width).random().toFloat()
+            binding.ivOnion.x = (-90..width).random().toFloat()
+            binding.ivCheese.x = (-90..width).random().toFloat()
+            binding.ivPepperoni.x = (-90..width).random().toFloat()
+        }
+        else {
+            binding.ivMushroom.y = (-90..height).random().toFloat()
+            binding.ivTomato.y = (-90..height).random().toFloat()
+            binding.ivBellPepper.y = (-90..height).random().toFloat()
+            binding.ivOnion.y = (-90..height).random().toFloat()
+            binding.ivCheese.y = (-90..height).random().toFloat()
+            binding.ivPepperoni.y = (-90..height).random().toFloat()
+        }
 
         Timer().schedule(object : TimerTask() {
             override fun run() {
@@ -92,93 +120,111 @@ class MainMenuActivity : AppCompatActivity() {
     }
 
     private fun changePos() {
-        // pizza
-        binding.ivPizza.x += pizzaSpeed
-        binding.ivPizza.y += pizzaSpeed
+        // mushroom
+        binding.ivMushroom.x += mushroomSpeed
+        binding.ivMushroom.y += mushroomSpeed
 
-        if(binding.ivPizza.x > width || binding.ivPizza.y > height) {
+        if(binding.ivMushroom.x > width || binding.ivMushroom.y > height) {
             val rand = (0..1).random()
-            pizzaSpeed = (5..10).random().toFloat()
+            mushroomSpeed = (5..10).random().toFloat()
 
             if(rand == 0) {
-                binding.ivPizza.x = (-90..width).random().toFloat()
-                binding.ivPizza.y = -90f
+                binding.ivMushroom.x = (-90..width).random().toFloat()
+                binding.ivMushroom.y = -90f
             }
             else {
-                binding.ivPizza.x = -90f
-                binding.ivPizza.y = (-90..height).random().toFloat()
+                binding.ivMushroom.x = -90f
+                binding.ivMushroom.y = (-90..height).random().toFloat()
             }
         }
 
-        // burger
-        binding.ivBurger.x += burgerSpeed
-        binding.ivBurger.y += burgerSpeed
+        // tomato
+        binding.ivTomato.x += tomatoSpeed
+        binding.ivTomato.y += tomatoSpeed
 
-        if(binding.ivBurger.x > width || binding.ivBurger.y > height) {
+        if(binding.ivTomato.x > width || binding.ivTomato.y > height) {
             val rand = (0..1).random()
-            burgerSpeed = (5..10).random().toFloat()
+            tomatoSpeed = (5..10).random().toFloat()
 
             if(rand == 0) {
-                binding.ivBurger.x = (-90..width).random().toFloat()
-                binding.ivBurger.y = -90f
+                binding.ivTomato.x = (-90..width).random().toFloat()
+                binding.ivTomato.y = -90f
             }
             else {
-                binding.ivBurger.x = -90f
-                binding.ivBurger.y = (-90..height).random().toFloat()
+                binding.ivTomato.x = -90f
+                binding.ivTomato.y = (-90..height).random().toFloat()
             }
         }
 
-        // drink
-        binding.ivDrink.x += drinkSpeed
-        binding.ivDrink.y += drinkSpeed
+        // bell pepper
+        binding.ivBellPepper.x += bellPepperSpeed
+        binding.ivBellPepper.y += bellPepperSpeed
 
-        if(binding.ivDrink.x > width || binding.ivDrink.y > height) {
+        if(binding.ivBellPepper.x > width || binding.ivBellPepper.y > height) {
             val rand = (0..1).random()
-            drinkSpeed = (5..10).random().toFloat()
+            bellPepperSpeed = (5..10).random().toFloat()
 
             if(rand == 0) {
-                binding.ivDrink.x = (-90..width).random().toFloat()
-                binding.ivDrink.y = -90f
+                binding.ivBellPepper.x = (-90..width).random().toFloat()
+                binding.ivBellPepper.y = -90f
             }
             else {
-                binding.ivDrink.x = -90f
-                binding.ivDrink.y = (-90..height).random().toFloat()
+                binding.ivBellPepper.x = -90f
+                binding.ivBellPepper.y = (-90..height).random().toFloat()
             }
         }
 
-        // sauce
-        binding.ivSauce.x += sauceSpeed
-        binding.ivSauce.y += sauceSpeed
+        // onion
+        binding.ivOnion.x += onionSpeed
+        binding.ivOnion.y += onionSpeed
 
-        if(binding.ivSauce.x > width || binding.ivSauce.y > height) {
+        if(binding.ivOnion.x > width || binding.ivOnion.y > height) {
             val rand = (0..1).random()
-            sauceSpeed = (5..10).random().toFloat()
+            onionSpeed = (5..10).random().toFloat()
 
             if(rand == 0) {
-                binding.ivSauce.x = (-90..width).random().toFloat()
-                binding.ivSauce.y = -90f
+                binding.ivOnion.x = (-90..width).random().toFloat()
+                binding.ivOnion.y = -90f
             }
             else {
-                binding.ivSauce.x = -90f
-                binding.ivSauce.y = (-90..height).random().toFloat()
+                binding.ivOnion.x = -90f
+                binding.ivOnion.y = (-90..height).random().toFloat()
             }
         }
 
-        // hotdog
-        binding.ivHotdog.x += hotdogSpeed
-        binding.ivHotdog.y += hotdogSpeed
+        // cheese
+        binding.ivCheese.x += cheeseSpeed
+        binding.ivCheese.y += cheeseSpeed
 
-        if(binding.ivHotdog.x > width || binding.ivHotdog.y > height) {
+        if(binding.ivCheese.x > width || binding.ivCheese.y > height) {
             val rand = (0..1).random()
-            hotdogSpeed = (5..10).random().toFloat()
+            cheeseSpeed = (5..10).random().toFloat()
 
             if(rand == 0) {
-                binding.ivHotdog.x = (-90..width).random().toFloat()
-                binding.ivHotdog.y = -90f
+                binding.ivCheese.x = (-90..width).random().toFloat()
+                binding.ivCheese.y = -90f
             }
             else {
-                binding.ivHotdog.x = -90f
-                binding.ivHotdog.y = (-90..height).random().toFloat()
+                binding.ivCheese.x = -90f
+                binding.ivCheese.y = (-90..height).random().toFloat()
+            }
+        }
+
+        // pepperoni
+        binding.ivPepperoni.x += pepperoniSpeed
+        binding.ivPepperoni.y += pepperoniSpeed
+
+        if(binding.ivPepperoni.x > width || binding.ivPepperoni.y > height) {
+            val rand = (0..1).random()
+            pepperoniSpeed = (5..10).random().toFloat()
+
+            if(rand == 0) {
+                binding.ivPepperoni.x = (-90..width).random().toFloat()
+                binding.ivPepperoni.y = -90f
+            }
+            else {
+                binding.ivPepperoni.x = -90f
+                binding.ivPepperoni.y = (-90..height).random().toFloat()
             }
         }
     }

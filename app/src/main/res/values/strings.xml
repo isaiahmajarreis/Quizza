@@ -24,9 +24,11 @@
     <string name="ans2">Jupiter</string>
     <string name="ans3">Mercury</string>
     <string name="ans4">Venus</string>
-    <string name="pizza_desc">pizza icon from flaticon</string>
-    <string name="burger_desc">burger icon from flaticon</string>
-    <string name="drink_desc">drink icon from flaticon</string>
-    <string name="hotdog_desc">hotdog icon from flaticon</string>
+    <string name="mushroom_desc">mushroom icon from flaticon</string>
+    <string name="tomato_desc">tomato icon from flaticon</string>
+    <string name="bell_pepper_desc">bell pepper icon from flaticon</string>
+    <string name="onion_desc">onion icon from flaticon</string>
+    <string name="cheese_desc">cheese icon from flaticon</string>
+    <string name="pepperoni_desc">pepperoni icon from flaticon</string>
 
 </resources>
