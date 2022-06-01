@@ -30,6 +30,7 @@ class MainMenuActivity : AppCompatActivity() {
     var tomatoSpeed = (5..10).random().toFloat()
     var bellPepperSpeed = (5..10).random().toFloat()
     var onionSpeed = (5..10).random().toFloat()
+    var garlicSpeed = (5..10).random().toFloat()
     var cheeseSpeed = (5..10).random().toFloat()
     var pepperoniSpeed = (5..10).random().toFloat()
 
@@ -43,12 +44,11 @@ class MainMenuActivity : AppCompatActivity() {
         val clickMp = MediaPlayer.create(this, R.raw.buttonclick)
 
         // initial positions
-        val rand = (0..1).random()
-
         binding.ivMushroom.x = -90f
         binding.ivTomato.x = -90f
         binding.ivBellPepper.x = -90f
         binding.ivOnion.x = -90f
+        binding.ivGarlic.x = -90f
         binding.ivCheese.x = -90f
         binding.ivPepperoni.x = -90f
 
@@ -56,14 +56,17 @@ class MainMenuActivity : AppCompatActivity() {
         binding.ivTomato.y = -90f
         binding.ivBellPepper.y = -90f
         binding.ivOnion.y = -90f
+        binding.ivGarlic.y = -90f
         binding.ivCheese.y = -90f
         binding.ivPepperoni.y = -90f
 
+        val rand = (0..1).random()
         if(rand == 0) {
             binding.ivMushroom.x = (-90..width).random().toFloat()
             binding.ivTomato.x = (-90..width).random().toFloat()
             binding.ivBellPepper.x = (-90..width).random().toFloat()
             binding.ivOnion.x = (-90..width).random().toFloat()
+            binding.ivGarlic.x = (-90..width).random().toFloat()
             binding.ivCheese.x = (-90..width).random().toFloat()
             binding.ivPepperoni.x = (-90..width).random().toFloat()
         }
@@ -72,6 +75,7 @@ class MainMenuActivity : AppCompatActivity() {
             binding.ivTomato.y = (-90..height).random().toFloat()
             binding.ivBellPepper.y = (-90..height).random().toFloat()
             binding.ivOnion.y = (-90..height).random().toFloat()
+            binding.ivGarlic.y = (-90..height).random().toFloat()
             binding.ivCheese.y = (-90..height).random().toFloat()
             binding.ivPepperoni.y = (-90..height).random().toFloat()
         }
@@ -189,6 +193,24 @@ class MainMenuActivity : AppCompatActivity() {
             else {
                 binding.ivOnion.x = -90f
                 binding.ivOnion.y = (-90..height).random().toFloat()
+            }
+        }
+
+        // garlic
+        binding.ivGarlic.x += garlicSpeed
+        binding.ivGarlic.y += garlicSpeed
+
+        if(binding.ivGarlic.x > width || binding.ivGarlic.y > height) {
+            val rand = (0..1).random()
+            garlicSpeed = (5..10).random().toFloat()
+
+            if(rand == 0) {
+                binding.ivGarlic.x = (-90..width).random().toFloat()
+                binding.ivGarlic.y = -90f
+            }
+            else {
+                binding.ivGarlic.x = -90f
+                binding.ivGarlic.y = (-90..height).random().toFloat()
             }
         }
 
