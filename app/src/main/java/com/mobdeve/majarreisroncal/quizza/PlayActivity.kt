@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.*
 import com.mobdeve.majarreisroncal.quizza.databinding.ActivityPlayBinding
 import com.mobdeve.majarreisroncal.quizza.opentriviaAPI.*
+import java.util.*
 import java.util.concurrent.Executors
 import kotlin.math.floor
 
@@ -30,6 +31,36 @@ class PlayActivity : AppCompatActivity() {
         token = intent.getStringExtra(EXTRA_MESSAGE_TOKEN)
         supportActionBar?.hide()
         setContentView(binding.root)
+
+        val mushroom = MainMenuAnimation(binding.ivMushroom)
+        val tomato = MainMenuAnimation(binding.ivTomato)
+        val bellPepper = MainMenuAnimation(binding.ivBellPepper)
+        val onion = MainMenuAnimation(binding.ivOnion)
+        val garlic = MainMenuAnimation(binding.ivGarlic)
+        val cheese = MainMenuAnimation(binding.ivCheese)
+        val pepperoni = MainMenuAnimation(binding.ivPepperoni)
+
+        mushroom.initializePosition()
+        tomato.initializePosition()
+        bellPepper.initializePosition()
+        onion.initializePosition()
+        garlic.initializePosition()
+        cheese.initializePosition()
+        pepperoni.initializePosition()
+
+        Timer().schedule(object : TimerTask() {
+            override fun run() {
+                Handler(Looper.getMainLooper()).post {
+                    mushroom.move()
+                    tomato.move()
+                    bellPepper.move()
+                    onion.move()
+                    garlic.move()
+                    cheese.move()
+                    pepperoni.move()
+                }
+            }
+        }, 0, 20)
 
         // TODO: fragments—one for countdown and one for actual game (maybe another for "time's up" screen)
 
