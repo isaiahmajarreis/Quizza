@@ -18,7 +18,8 @@
     <string name="play_again">Play Again</string>
     <string name="share">Share Results</string>
     <string name="main_menu">Main Menu</string>
-    <string name="timer">60</string>
+    <string name="timer">180</string>
+    <string name="game_score">0</string>
     <string name="question">Which of the following is the hottest planet in the Solar System?</string>
     <string name="ans1">Mars</string>
     <string name="ans2">Jupiter</string>
