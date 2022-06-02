@@ -41,11 +41,14 @@ class PlayActivity : AppCompatActivity() {
 
         getQnA(this)
 
+        /*
         Handler(Looper.getMainLooper()).postDelayed({
             val goToScore = Intent(this, ScoreActivity::class.java)
             goToScore.putExtra("score", score)
             startActivity(goToScore)
         }, 10000)
+
+         */
     }
 
     fun answerClicked(view : View)
@@ -56,53 +59,60 @@ class PlayActivity : AppCompatActivity() {
             var checker = false
             when(view.id)
             {
-                R.id.answer0 -> if(correctInd == 0) checker = true
-                R.id.answer1 -> if(correctInd == 1) checker = true
-                R.id.answer2 -> if(correctInd == 2) checker = true
-                R.id.answer3 -> if(correctInd == 3) checker = true
-            }
-            //changeBtn(binding.answer0, 0)
-            //changeBtn(binding.answer1, 1)
-            //changeBtn(binding.answer2, 2)
-            //changeBtn(binding.answer3, 3)
+                R.id.answer0 -> if(correctInd == 0)
+                {
+                    checker = true
+                    binding.answer0.setBackgroundResource(R.drawable.button_green)
+                }
+                else
+                    binding.answer0.setBackgroundResource(R.drawable.button_play)
 
-            if (correctInd == 0)
-                btnCorrect(binding.answer0)
-            else if (correctInd == 1)
-                btnCorrect(binding.answer1)
-            else if (correctInd == 2)
-                btnCorrect(binding.answer2)
-            else if (correctInd == 3)
-                btnCorrect(binding.answer3)
-            else
-            {
-                if (correctInd != 0)
-                    btnWrong(binding.answer0)
-                if (correctInd != 1)
-                    btnWrong(binding.answer1)
-                if (correctInd != 2)
-                    btnWrong(binding.answer2)
-                if (correctInd != 3)
-                    btnWrong(binding.answer3)
+                R.id.answer1 -> if(correctInd == 1)
+                {
+                    checker = true
+                    binding.answer1.setBackgroundResource(R.drawable.button_green)
+                }
+                else
+                    binding.answer1.setBackgroundResource(R.drawable.button_play)
+
+                R.id.answer2 -> if(correctInd == 2)
+                {
+                    checker = true
+                    binding.answer2.setBackgroundResource(R.drawable.button_green)
+                }
+                else
+                    binding.answer2.setBackgroundResource(R.drawable.button_play)
+
+                R.id.answer3 -> if(correctInd == 3)
+                {
+                    checker = true
+                    binding.answer3.setBackgroundResource(R.drawable.button_green)
+                }
+                else
+                    binding.answer3.setBackgroundResource(R.drawable.button_play)
             }
+
 
             if(checker) { score++ }
-                Toast.makeText(this, "Score: $score", Toast.LENGTH_LONG).show()
+            binding.score.text = "$score"
         }
-        Handler(Looper.getMainLooper()).postDelayed({
-        }, 500)
 
         getQnA(this)
         this.findViewById<RadioGroup>(R.id.radioGroup).isSelected = false
-        resetBtn(binding.answer0)
-        resetBtn(binding.answer1)
-        resetBtn(binding.answer2)
-        resetBtn(binding.answer3)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            resetBtn(binding.answer0)
+            resetBtn(binding.answer1)
+            resetBtn(binding.answer2)
+            resetBtn(binding.answer3)
+        }, 250)
+
 
     }
 
     private fun getQnA(activity : PlayActivity)
     {
+
         loadQuestionsExecutor.execute()
         {
             try
@@ -141,30 +151,6 @@ class PlayActivity : AppCompatActivity() {
             } catch (e: Exception) {}
         }
 
-    }
-
-
-    private fun changeBtn (radio : RadioButton, index : Int)
-    {
-        if(correctInd == index){
-            radio.setBackgroundResource(R.drawable.button_green)
-        }
-        else{
-           radio.setBackgroundResource(R.drawable.button_wrong)
-        }
-        radio.isEnabled = false
-    }
-
-    private fun btnCorrect (radio : RadioButton)
-    {
-        radio.setBackgroundResource(R.drawable.button_green)
-        radio.isEnabled = false
-    }
-
-    private fun btnWrong (radio : RadioButton)
-    {
-        radio.setBackgroundResource(R.drawable.button_play)
-        radio.isEnabled = false
     }
 
     private fun resetBtn (radio : RadioButton)
