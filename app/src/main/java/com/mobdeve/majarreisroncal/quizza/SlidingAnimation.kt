@@ -3,7 +3,7 @@ package com.mobdeve.majarreisroncal.quizza
 import android.content.res.Resources
 import android.widget.ImageView
 
-class MainMenuAnimation(private val image: ImageView) {
+class SlidingAnimation(private val image: ImageView) {
     private val width = Resources.getSystem().displayMetrics.widthPixels
     private val height = Resources.getSystem().displayMetrics.heightPixels
 

@@ -1,6 +1,5 @@
 package com.mobdeve.majarreisroncal.quizza
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -32,13 +31,13 @@ class PlayActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(binding.root)
 
-        val mushroom = MainMenuAnimation(binding.ivMushroom)
-        val tomato = MainMenuAnimation(binding.ivTomato)
-        val bellPepper = MainMenuAnimation(binding.ivBellPepper)
-        val onion = MainMenuAnimation(binding.ivOnion)
-        val garlic = MainMenuAnimation(binding.ivGarlic)
-        val cheese = MainMenuAnimation(binding.ivCheese)
-        val pepperoni = MainMenuAnimation(binding.ivPepperoni)
+        val mushroom = SlidingAnimation(binding.ivMushroom)
+        val tomato = SlidingAnimation(binding.ivTomato)
+        val bellPepper = SlidingAnimation(binding.ivBellPepper)
+        val onion = SlidingAnimation(binding.ivOnion)
+        val garlic = SlidingAnimation(binding.ivGarlic)
+        val cheese = SlidingAnimation(binding.ivCheese)
+        val pepperoni = SlidingAnimation(binding.ivPepperoni)
 
         mushroom.initializePosition()
         tomato.initializePosition()
@@ -78,7 +77,6 @@ class PlayActivity : AppCompatActivity() {
             goToScore.putExtra("score", score)
             startActivity(goToScore)
         }, 10000)
-
          */
     }
 
@@ -88,41 +86,37 @@ class PlayActivity : AppCompatActivity() {
         {
             val isChecked = view.isChecked
             var checker = false
+
             when(view.id)
             {
                 R.id.answer0 -> if(correctInd == 0)
-                {
                     checker = true
-                    binding.answer0.setBackgroundResource(R.drawable.button_green)
-                }
                 else
-                    binding.answer0.setBackgroundResource(R.drawable.button_play)
+                    binding.answer0.setBackgroundResource(R.drawable.button_wrong)
 
                 R.id.answer1 -> if(correctInd == 1)
-                {
                     checker = true
-                    binding.answer1.setBackgroundResource(R.drawable.button_green)
-                }
                 else
-                    binding.answer1.setBackgroundResource(R.drawable.button_play)
+                    binding.answer1.setBackgroundResource(R.drawable.button_wrong)
 
                 R.id.answer2 -> if(correctInd == 2)
-                {
                     checker = true
-                    binding.answer2.setBackgroundResource(R.drawable.button_green)
-                }
                 else
-                    binding.answer2.setBackgroundResource(R.drawable.button_play)
+                    binding.answer2.setBackgroundResource(R.drawable.button_wrong)
 
                 R.id.answer3 -> if(correctInd == 3)
-                {
                     checker = true
-                    binding.answer3.setBackgroundResource(R.drawable.button_green)
-                }
                 else
-                    binding.answer3.setBackgroundResource(R.drawable.button_play)
+                    binding.answer3.setBackgroundResource(R.drawable.button_wrong)
             }
 
+            when(correctInd)
+            {
+                0 -> binding.answer0.setBackgroundResource(R.drawable.button_green)
+                1 -> binding.answer1.setBackgroundResource(R.drawable.button_green)
+                2 -> binding.answer2.setBackgroundResource(R.drawable.button_green)
+                3 -> binding.answer3.setBackgroundResource(R.drawable.button_green)
+            }
 
             if(checker) { score++ }
             binding.score.text = "$score"

@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/iv_mushroom"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/mushroom"
         android:contentDescription="@string/mushroom_desc"
         tools:ignore="MissingConstraints"
@@ -18,8 +18,8 @@
 
     <ImageView
         android:id="@+id/iv_tomato"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/tomato"
         android:contentDescription="@string/tomato_desc"
         tools:ignore="MissingConstraints"
@@ -27,8 +27,8 @@
 
     <ImageView
         android:id="@+id/iv_bell_pepper"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/bell_pepper"
         android:contentDescription="@string/bell_pepper_desc"
         tools:ignore="MissingConstraints"
@@ -36,8 +36,8 @@
 
     <ImageView
         android:id="@+id/iv_onion"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/onion"
         android:contentDescription="@string/onion_desc"
         tools:ignore="MissingConstraints"
@@ -45,8 +45,8 @@
 
     <ImageView
         android:id="@+id/iv_garlic"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/garlic"
         android:contentDescription="@string/garlic_desc"
         tools:ignore="MissingConstraints"
@@ -54,8 +54,8 @@
 
     <ImageView
         android:id="@+id/iv_cheese"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/cheese"
         android:contentDescription="@string/cheese_desc"
         tools:ignore="MissingConstraints"
@@ -63,8 +63,8 @@
 
     <ImageView
         android:id="@+id/iv_pepperoni"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/pepperoni"
         android:contentDescription="@string/pepperoni_desc"
         tools:ignore="MissingConstraints"

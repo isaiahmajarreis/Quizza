@@ -1,7 +1,6 @@
 package com.mobdeve.majarreisroncal.quizza
 
 import android.content.Intent
-import android.content.res.Resources
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
@@ -31,13 +30,13 @@ class MainMenuActivity : AppCompatActivity() {
 
         val clickMp = MediaPlayer.create(this, R.raw.buttonclick)
 
-        val mushroom = MainMenuAnimation(binding.ivMushroom)
-        val tomato = MainMenuAnimation(binding.ivTomato)
-        val bellPepper = MainMenuAnimation(binding.ivBellPepper)
-        val onion = MainMenuAnimation(binding.ivOnion)
-        val garlic = MainMenuAnimation(binding.ivGarlic)
-        val cheese = MainMenuAnimation(binding.ivCheese)
-        val pepperoni = MainMenuAnimation(binding.ivPepperoni)
+        val mushroom = SlidingAnimation(binding.ivMushroom)
+        val tomato = SlidingAnimation(binding.ivTomato)
+        val bellPepper = SlidingAnimation(binding.ivBellPepper)
+        val onion = SlidingAnimation(binding.ivOnion)
+        val garlic = SlidingAnimation(binding.ivGarlic)
+        val cheese = SlidingAnimation(binding.ivCheese)
+        val pepperoni = SlidingAnimation(binding.ivPepperoni)
 
         mushroom.initializePosition()
         tomato.initializePosition()
