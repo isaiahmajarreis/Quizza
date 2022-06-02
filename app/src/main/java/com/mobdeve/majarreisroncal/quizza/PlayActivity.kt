@@ -1,5 +1,7 @@
 package com.mobdeve.majarreisroncal.quizza
 
+import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -16,12 +18,14 @@ import kotlin.math.floor
 class PlayActivity : AppCompatActivity() {
     private var correctInd : Int = 0
     private var score : Int = 0
-    private var difficulty : GameDifficulty = GameDifficulty.easy
-    // default difficulty = easy
+    private var difficulty : GameDifficulty = GameDifficulty.easy // default difficulty = easy
     private var token : String? = null
+
+    // TODO: these two media players cause errors when running
+//    private val clickCorrect = MediaPlayer.create(this, R.raw.correct)
+//    private val clickWrong = MediaPlayer.create(this, R.raw.wrong)
     private val loadQuestionsExecutor = Executors.newSingleThreadExecutor()
     private lateinit var binding: ActivityPlayBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,13 +75,12 @@ class PlayActivity : AppCompatActivity() {
 
         getQnA(this)
 
-        /*
         Handler(Looper.getMainLooper()).postDelayed({
             val goToScore = Intent(this, ScoreActivity::class.java)
             goToScore.putExtra("score", score)
             startActivity(goToScore)
         }, 10000)
-         */
+
     }
 
     fun answerClicked(view : View)
@@ -118,7 +121,13 @@ class PlayActivity : AppCompatActivity() {
                 3 -> binding.answer3.setBackgroundResource(R.drawable.button_green)
             }
 
-            if(checker) { score++ }
+            if(checker) {
+                score++
+//                clickCorrect.start()
+            }
+//            else
+//                clickWrong.start()
+
             binding.score.text = "$score"
         }
 
