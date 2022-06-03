@@ -21,10 +21,11 @@ class PlayActivity : AppCompatActivity() {
     private var difficulty : GameDifficulty = GameDifficulty.easy // default difficulty = easy
     private var token : String? = null
 
-    // TODO: these two media players cause errors when running
-//    private val clickCorrect = MediaPlayer.create(this, R.raw.correct)
-//    private val clickWrong = MediaPlayer.create(this, R.raw.wrong)
+    private val time: Long = 15
     private val loadQuestionsExecutor = Executors.newSingleThreadExecutor()
+
+    private lateinit var clickCorrect: MediaPlayer
+    private lateinit var clickWrong: MediaPlayer
     private lateinit var binding: ActivityPlayBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +35,9 @@ class PlayActivity : AppCompatActivity() {
         token = intent.getStringExtra(EXTRA_MESSAGE_TOKEN)
         supportActionBar?.hide()
         setContentView(binding.root)
+
+        clickCorrect = MediaPlayer.create(this, R.raw.correct)
+        clickWrong = MediaPlayer.create(this, R.raw.wrong)
 
         val mushroom = SlidingAnimation(binding.ivMushroom)
         val tomato = SlidingAnimation(binding.ivTomato)
@@ -79,7 +83,7 @@ class PlayActivity : AppCompatActivity() {
             val goToScore = Intent(this, ScoreActivity::class.java)
             goToScore.putExtra("score", score)
             startActivity(goToScore)
-        }, 10000)
+        }, time * 1000)
 
     }
 
@@ -123,10 +127,10 @@ class PlayActivity : AppCompatActivity() {
 
             if(checker) {
                 score++
-//                clickCorrect.start()
+                clickCorrect.start()
             }
-//            else
-//                clickWrong.start()
+            else
+                clickWrong.start()
 
             binding.score.text = "$score"
         }

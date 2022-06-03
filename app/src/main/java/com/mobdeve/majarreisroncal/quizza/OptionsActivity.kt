@@ -2,7 +2,6 @@ package com.mobdeve.majarreisroncal.quizza
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
 import com.mobdeve.majarreisroncal.quizza.databinding.ActivityOptionsBinding
 
 class OptionsActivity : AppCompatActivity() {

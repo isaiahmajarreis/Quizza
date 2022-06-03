@@ -12,7 +12,6 @@ import com.mobdeve.majarreisroncal.quizza.opentriviaAPI.OpenTrivia
 import java.util.*
 import java.util.concurrent.Executors
 import kotlin.system.exitProcess
-import kotlin.concurrent.timer
 
 const val EXTRA_MESSAGE_TOKEN = "com.mobdeve.majarreisroncal.quizza.msg.token"
 
@@ -67,9 +66,8 @@ class MainMenuActivity : AppCompatActivity() {
             val goToPlay = Intent(this, play)
                 .apply { putExtra(EXTRA_MESSAGE_TOKEN, token)}
             // Timer: 180 Seconds
-            timer(initialDelay = 1000L, period = 180000L)
-            {startActivity(goToPlay)}
-
+//            timer(initialDelay = 1000L, period = 18000L)
+            startActivity(goToPlay)
         }
 
         binding.btnStats.setOnClickListener {

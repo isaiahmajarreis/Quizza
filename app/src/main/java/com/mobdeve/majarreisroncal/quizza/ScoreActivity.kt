@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import com.mobdeve.majarreisroncal.quizza.databinding.ActivityHelpBinding
 import com.mobdeve.majarreisroncal.quizza.databinding.ActivityScoreBinding
 
 class ScoreActivity : AppCompatActivity() {
