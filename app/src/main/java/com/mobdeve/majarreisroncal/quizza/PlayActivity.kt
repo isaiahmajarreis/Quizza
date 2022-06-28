@@ -14,7 +14,6 @@ import java.util.*
 import java.util.concurrent.Executors
 import kotlin.math.floor
 
-
 class PlayActivity : AppCompatActivity() {
     private var correctInd : Int = 0
     private var score : Int = 0
@@ -71,12 +70,6 @@ class PlayActivity : AppCompatActivity() {
 
         // TODO: fragments—one for countdown and one for actual game (maybe another for "time's up" screen)
 
-        binding.question.text = ""
-        binding.answer0.text = ""
-        binding.answer1.text = ""
-        binding.answer2.text = ""
-        binding.answer3.text = ""
-
         getQnA(this)
 
         Handler(Looper.getMainLooper()).postDelayed({
@@ -96,25 +89,33 @@ class PlayActivity : AppCompatActivity() {
 
             when(view.id)
             {
-                R.id.answer0 -> if(correctInd == 0)
-                    checker = true
-                else
-                    binding.answer0.setBackgroundResource(R.drawable.button_wrong)
+                R.id.answer0 -> {
+                    if(correctInd == 0)
+                        checker = true
+                    else
+                        binding.answer0.setBackgroundResource(R.drawable.button_wrong)
+                }
 
-                R.id.answer1 -> if(correctInd == 1)
-                    checker = true
-                else
-                    binding.answer1.setBackgroundResource(R.drawable.button_wrong)
+                R.id.answer1 -> {
+                    if(correctInd == 1)
+                        checker = true
+                    else
+                        binding.answer1.setBackgroundResource(R.drawable.button_wrong)
+                }
 
-                R.id.answer2 -> if(correctInd == 2)
-                    checker = true
-                else
-                    binding.answer2.setBackgroundResource(R.drawable.button_wrong)
+                R.id.answer2 -> {
+                    if(correctInd == 2)
+                        checker = true
+                    else
+                        binding.answer2.setBackgroundResource(R.drawable.button_wrong)
+                }
 
-                R.id.answer3 -> if(correctInd == 3)
-                    checker = true
-                else
-                    binding.answer3.setBackgroundResource(R.drawable.button_wrong)
+                R.id.answer3 -> {
+                    if(correctInd == 3)
+                        checker = true
+                    else
+                        binding.answer3.setBackgroundResource(R.drawable.button_wrong)
+                }
             }
 
             when(correctInd)
@@ -150,7 +151,6 @@ class PlayActivity : AppCompatActivity() {
 
     private fun getQnA(activity : PlayActivity)
     {
-
         loadQuestionsExecutor.execute()
         {
             try

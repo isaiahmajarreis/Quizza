@@ -1,23 +1,33 @@
 <resources>
+    <!--  Main Menu  -->
     <string name="app_name">Quizza</string>
     <string name="play">Play</string>
     <string name="stats">Stats</string>
     <string name="options">Options</string>
     <string name="exit">Exit</string>
     <string name="help">\?</string>
+
+    <!--  Settings  -->
     <string name="sound_effects">Sound Effects</string>
     <string name="background_music">Background Music</string>
     <string name="audio_settings">Audio Settings</string>
     <string name="email">name@email.com</string>
     <string name="profile">Profile</string>
     <string name="logout">Log Out</string>
+
+    <!--  How to Play  -->
     <string name="how_to_play">How to play?</string>
     <string name="instructions">Quizza is a time-based trivia game. Within 60 seconds, you must answer as many questions correctly as possible by tapping on the option you think is correct.\n\nEach correct answer will award you a point. If you get the answer wrong, you will get no points and the question will be skipped.\n\nGot it? Then let’s play! :D</string>
+
+    <!--  Score  -->
     <string name="score_placeholder">28</string>
     <string name="score">SCORE</string>
     <string name="play_again">Play Again</string>
     <string name="share">Share Results</string>
     <string name="main_menu">Main Menu</string>
+
+    <!--  Play  -->
+    <string name="start">START!</string>
     <string name="timer">180</string>
     <string name="game_score">0</string>
     <string name="question">Which of the following is the hottest planet in the Solar System?</string>
@@ -25,6 +35,8 @@
     <string name="ans2">Jupiter</string>
     <string name="ans3">Mercury</string>
     <string name="ans4">Venus</string>
+
+    <!--  image descriptions  -->
     <string name="mushroom_desc">mushroom icon from flaticon</string>
     <string name="tomato_desc">tomato icon from flaticon</string>
     <string name="bell_pepper_desc">bell pepper icon from flaticon</string>
@@ -32,5 +44,7 @@
     <string name="garlic_desc">garlic icon from flaticon</string>
     <string name="cheese_desc">cheese icon from flaticon</string>
     <string name="pepperoni_desc">pepperoni icon from flaticon</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

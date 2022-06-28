@@ -94,7 +94,7 @@
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/nunito_regular"
         android:gravity="center"
-        android:text="@string/question"
+        android:text=""
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -126,7 +126,7 @@
             android:onClick="answerClicked"
             android:paddingHorizontal="20dp"
             android:paddingVertical="10dp"
-            android:text="@string/ans1"
+            android:text=""
             android:textColor="@color/white"
             app:buttonCompat="@null"
             tools:targetApi="o" />
@@ -145,7 +145,7 @@
             android:onClick="answerClicked"
             android:paddingHorizontal="20dp"
             android:paddingVertical="10dp"
-            android:text="@string/ans2"
+            android:text=""
             android:textColor="@color/white"
             app:buttonCompat="@null"
             tools:targetApi="o" />
@@ -164,7 +164,7 @@
             android:onClick="answerClicked"
             android:paddingHorizontal="20dp"
             android:paddingVertical="10dp"
-            android:text="@string/ans3"
+            android:text=""
             android:textColor="@color/white"
             app:buttonCompat="@null"
             tools:targetApi="o" />
@@ -182,7 +182,7 @@
             android:onClick="answerClicked"
             android:paddingHorizontal="20dp"
             android:paddingVertical="10dp"
-            android:text="@string/ans4"
+            android:text=""
             android:textColor="@color/white"
             app:buttonCompat="@null"
             tools:targetApi="o" />
