@@ -42,7 +42,7 @@ class ScoreActivity : AppCompatActivity() {
         }
 
         binding.btnShare.setOnClickListener {
-            var shareMessage = "Check it out! I got a score of $shareScore in Quizza! Can you go higher? #QuizzaTrivia"
+            val shareMessage = "Check it out! I got a score of $shareScore in Quizza! Can you go higher? #QuizzaTrivia"
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clip = ClipData.newPlainText("label", shareMessage)
             clipboard.setPrimaryClip(clip)
@@ -53,7 +53,6 @@ class ScoreActivity : AppCompatActivity() {
             intent.type = "text/plain"
 
             startActivity(Intent.createChooser(intent, "Share with: "))
-
         }
 
         binding.btnReturn.setOnClickListener() {

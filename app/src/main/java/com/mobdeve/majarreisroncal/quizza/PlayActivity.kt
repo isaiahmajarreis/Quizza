@@ -4,9 +4,11 @@ import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.view.WindowManager
 import android.widget.*
 import com.mobdeve.majarreisroncal.quizza.databinding.ActivityPlayBinding
 import com.mobdeve.majarreisroncal.quizza.opentriviaAPI.*
@@ -20,7 +22,7 @@ class PlayActivity : AppCompatActivity() {
     private var difficulty : GameDifficulty = GameDifficulty.easy // default difficulty = easy
     private var token : String? = null
 
-    private val time: Long = 15
+    private val time: Long = 30
     private val loadQuestionsExecutor = Executors.newSingleThreadExecutor()
 
     private lateinit var clickCorrect: MediaPlayer
@@ -54,7 +56,8 @@ class PlayActivity : AppCompatActivity() {
         cheese.initializePosition()
         pepperoni.initializePosition()
 
-        Timer().schedule(object : TimerTask() {
+        val timer = Timer()
+        val task = object : TimerTask() {
             override fun run() {
                 Handler(Looper.getMainLooper()).post {
                     mushroom.move()
@@ -66,18 +69,40 @@ class PlayActivity : AppCompatActivity() {
                     pepperoni.move()
                 }
             }
-        }, 0, 20)
-
-        // TODO: fragments—one for countdown and one for actual game (maybe another for "time's up" screen)
+        }
+        timer.schedule(task, 0, 20)
 
         getQnA(this)
+
+        val countdown = binding.tvTime
+        var timeValue = 0
+
+        object : CountDownTimer(time * 1000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                timeValue = millisUntilFinished.toInt() / 1000 + 1
+                countdown.text = timeValue.toString()
+            }
+            override fun onFinish() {
+                countdown.text = "0"
+                task.cancel()
+                timer.cancel()
+                timeUp()
+            }
+        }.start()
+    }
+
+    private fun timeUp() {
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+
+        binding.tvTimesUp.visibility = View.VISIBLE
 
         Handler(Looper.getMainLooper()).postDelayed({
             val goToScore = Intent(this, ScoreActivity::class.java)
             goToScore.putExtra("score", score)
             startActivity(goToScore)
-        }, time * 1000)
-
+        }, 3000)
     }
 
     fun answerClicked(view : View)
@@ -133,7 +158,7 @@ class PlayActivity : AppCompatActivity() {
             else
                 clickWrong.start()
 
-            binding.score.text = "$score"
+            binding.tvScore.text = "$score"
         }
 
         getQnA(this)
