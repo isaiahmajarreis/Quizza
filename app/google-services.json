@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "941816125750",
+    "project_id": "quizza-ff4d9",
+    "storage_bucket": "quizza-ff4d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941816125750:android:06b501e0cca33fbe1cbb97",
+        "android_client_info": {
+          "package_name": "com.mobdeve.majarreisroncal.quizza"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "941816125750-pmrl5l8mb69k6tdfj67tcafqn4nq4v48.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1HkRqoVlT2Et9c_fo_pv_09Thhzk1tio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "941816125750-pmrl5l8mb69k6tdfj67tcafqn4nq4v48.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
