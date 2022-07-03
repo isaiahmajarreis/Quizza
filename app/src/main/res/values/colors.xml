@@ -15,4 +15,5 @@
     <color name="gray_pressed">#545454</color>
     <color name="red_pressed">#FF0000</color>
     <color name="blue_pressed">#1C80FD</color>
+    <color name="yellow_pressed">#B59000</color>
 </resources>

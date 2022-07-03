@@ -5,25 +5,19 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.mobdeve.majarreisroncal.quizza.databinding.ActivityMainMenuBinding
-import com.mobdeve.majarreisroncal.quizza.opentriviaAPI.OpenTrivia
 import java.util.*
-import java.util.concurrent.Executors
 import kotlin.system.exitProcess
 
 class MainMenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainMenuBinding
-//    private val loadTokenExecutor = Executors.newSingleThreadExecutor()
-//    var token: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
-//        loadToken()
         val statsFragment = StatsFragment()
         val clickMp = MediaPlayer.create(this, R.raw.buttonclick)
 
@@ -60,20 +54,8 @@ class MainMenuActivity : AppCompatActivity() {
         binding.btnPlay.setOnClickListener {
             clickMp.start()
 
-//            val play = PlayActivity::class.java
-//            val goToPlay = Intent(this, play)
-//                .apply { putExtra(EXTRA_MESSAGE_TOKEN, token)}
-//            startActivity(goToPlay)
-            // Timer: 180 Seconds
-//            timer(initialDelay = 1000L, period = 18000L)
-
-//            val test = TestActivity::class.java
-//            val goToTest = Intent(this, test)
-//            startActivity(goToTest)
-
             val countdown = CountdownActivity::class.java
             val goToCountdown = Intent(this, countdown)
-
             startActivity(goToCountdown)
         }
 
@@ -104,16 +86,4 @@ class MainMenuActivity : AppCompatActivity() {
             exitProcess(-1)
         }
     }
-
-//    private fun loadToken() {
-//        loadTokenExecutor.execute {
-//            try {
-//                token = OpenTrivia().getToken()
-//            } catch (e: Exception) {
-//                runOnUiThread {
-//                    Toast.makeText(this, "An error occurred please retry later: ${e.message}", Toast.LENGTH_LONG).show()
-//                }
-//            }
-//        }
-//    }
 }

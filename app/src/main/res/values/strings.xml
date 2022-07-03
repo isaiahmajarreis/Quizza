@@ -33,13 +33,10 @@
     <string name="score_text">Score:</string>
     <string name="game_time">60</string>
     <string name="time_text">Time:</string>
-    <string name="question">Which of the following is the hottest planet in the Solar System?</string>
-    <string name="ans1">Mars</string>
-    <string name="ans2">Jupiter</string>
-    <string name="ans3">Mercury</string>
-    <string name="ans4">Venus</string>
+    <string name="time_up">TIME\'S\n UP</string>
 
     <!--  image descriptions  -->
+    <string name="pizza_desc">pizza icon from flaticon</string>
     <string name="mushroom_desc">mushroom icon from flaticon</string>
     <string name="tomato_desc">tomato icon from flaticon</string>
     <string name="bell_pepper_desc">bell pepper icon from flaticon</string>
@@ -47,5 +44,19 @@
     <string name="garlic_desc">garlic icon from flaticon</string>
     <string name="cheese_desc">cheese icon from flaticon</string>
     <string name="pepperoni_desc">pepperoni icon from flaticon</string>
-    <string name="time_up">TIME\'S\n UP</string>
+
+    <!--  Account  -->
+    <string name="yellow_wave_desc">yellow wave as background</string>
+    <string name="sign_in">Sign in\nto play</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="login_to_register">No account yet? Register here!</string>
+
+    <string name="red_wave_desc">red wave as background</string>
+    <string name="create_account">Create an\naccount</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="register_to_login">Already have an account?</string>
+
 </resources>
