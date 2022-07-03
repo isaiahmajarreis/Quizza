@@ -1,5 +1,8 @@
 package com.mobdeve.majarreisroncal.quizza
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
@@ -40,6 +43,10 @@ class ScoreActivity : AppCompatActivity() {
 
         binding.btnShare.setOnClickListener {
             var shareMessage = "Check it out! I got a score of $shareScore in Quizza! Can you go higher? #QuizzaTrivia"
+            val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("label", shareMessage)
+            clipboard.setPrimaryClip(clip)
+
             val intent = Intent()
             intent.action = Intent.ACTION_SEND
             intent.putExtra(Intent.EXTRA_TEXT, shareMessage)
