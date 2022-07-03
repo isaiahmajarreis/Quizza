@@ -24,7 +24,7 @@ class MainMenuActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 //        loadToken()
-
+        val statsFragment = StatsFragment()
         val clickMp = MediaPlayer.create(this, R.raw.buttonclick)
 
         val mushroom = SlidingAnimation(binding.ivMushroom)
@@ -78,8 +78,8 @@ class MainMenuActivity : AppCompatActivity() {
         }
 
         binding.btnStats.setOnClickListener {
-            // TODO: modal for stats
             clickMp.start()
+            statsFragment.show(supportFragmentManager,"BottomSheetDialog")
         }
 
         binding.btnOptions.setOnClickListener {
