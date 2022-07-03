@@ -36,7 +36,7 @@
         android:textColor="@color/white"
         android:textSize="50sp"
         android:fontFamily="@font/nunito_regular"
-        android:gravity="center"
+        android:gravity="end"
         app:layout_constraintTop_toTopOf="@id/img_wave"
         app:layout_constraintLeft_toRightOf="@id/img_pizza"
         android:layout_marginTop="50dp"
@@ -60,9 +60,9 @@
         android:id="@+id/et_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tv_username"
         android:autofillHints="password"
-        android:inputType="textPassword"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username"
         android:layout_marginHorizontal="25dp"
         />
 
@@ -101,14 +101,14 @@
         android:textSize="16sp"
         android:fontFamily="@font/nunito_regular"
         android:padding="0dp"
-        app:layout_constraintBottom_toTopOf="@id/tv_register"
+        app:layout_constraintBottom_toTopOf="@id/tv_to_register"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="5dp"
         />
 
     <TextView
-        android:id="@+id/tv_register"
+        android:id="@+id/tv_to_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_to_register"

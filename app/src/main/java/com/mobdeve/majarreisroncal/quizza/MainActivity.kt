@@ -5,6 +5,7 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.mobdeve.majarreisroncal.quizza.databinding.ActivityMainBinding
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
         Toast.makeText(this, "Connected to Firebase!", Toast.LENGTH_LONG).show()
 
@@ -25,8 +27,8 @@ class MainActivity : AppCompatActivity() {
             backgroundMp.start()
             backgroundMp.isLooping = true
 
-            val goToMainMenu = Intent(this, MainMenuActivity::class.java)
-            startActivity(goToMainMenu)
+            val goToAccount = Intent(this, AccountActivity::class.java)
+            startActivity(goToAccount)
         }, 5000)
     }
 
