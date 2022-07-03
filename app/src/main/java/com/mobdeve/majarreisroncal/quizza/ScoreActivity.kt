@@ -2,10 +2,14 @@ package com.mobdeve.majarreisroncal.quizza
 
 import android.content.Intent
 import android.media.MediaPlayer
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
+import com.facebook.share.model.ShareHashtag
+import com.facebook.share.model.ShareLinkContent
+import com.facebook.share.widget.ShareDialog
 import com.mobdeve.majarreisroncal.quizza.databinding.ActivityScoreBinding
 import com.mobdeve.majarreisroncal.quizza.opentriviaAPI.OpenTrivia
 import java.util.concurrent.Executors
@@ -23,6 +27,7 @@ class ScoreActivity : AppCompatActivity() {
         val score = intent.getIntExtra("score", 0)
         val textViewScore = findViewById<TextView>(R.id.tv_score_num)
         textViewScore.text = score.toString()
+        val shareScore = score.toString()
 
         binding.btnPlayAgain.setOnClickListener {
             clickMp.start()
@@ -34,7 +39,14 @@ class ScoreActivity : AppCompatActivity() {
         }
 
         binding.btnShare.setOnClickListener {
-            // TODO: share score to facebook
+            var shareMessage = "Check it out! I got a score of $shareScore in Quizza! Can you go higher? #QuizzaTrivia"
+            val intent = Intent()
+            intent.action = Intent.ACTION_SEND
+            intent.putExtra(Intent.EXTRA_TEXT, shareMessage)
+            intent.type = "text/plain"
+
+            startActivity(Intent.createChooser(intent, "Share with: "))
+
         }
 
         binding.btnReturn.setOnClickListener() {
