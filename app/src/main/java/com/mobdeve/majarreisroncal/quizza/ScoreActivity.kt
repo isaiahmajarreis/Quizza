@@ -17,6 +17,9 @@ import com.mobdeve.majarreisroncal.quizza.databinding.ActivityScoreBinding
 import com.mobdeve.majarreisroncal.quizza.opentriviaAPI.OpenTrivia
 import java.util.concurrent.Executors
 
+/* displays the user's achieved score within
+   the specified time limit */
+
 class ScoreActivity : AppCompatActivity() {
     private lateinit var binding: ActivityScoreBinding
 
@@ -32,6 +35,8 @@ class ScoreActivity : AppCompatActivity() {
         textViewScore.text = score.toString()
         val shareScore = score.toString()
 
+        /* gives the user an option to play again, which would send them
+           back to the countdown timer and eventually, playActivity */
         binding.btnPlayAgain.setOnClickListener {
             clickMp.start()
 
@@ -41,8 +46,12 @@ class ScoreActivity : AppCompatActivity() {
             startActivity(goToCountdown)
         }
 
+        /* enables the user to share the score that they achieved through
+        plain text by creating a chooser, which enables users to relay
+        information on installed apps on their device (mail, social media) */
+
         binding.btnShare.setOnClickListener {
-            val shareMessage = "Check it out! I got a score of $shareScore in Quizza! Can you go higher? #QuizzaTrivia"
+            var shareMessage = "Check it out! I got a score of $shareScore in Quizza! Can you go higher? #QuizzaTrivia"
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clip = ClipData.newPlainText("label", shareMessage)
             clipboard.setPrimaryClip(clip)
@@ -53,8 +62,10 @@ class ScoreActivity : AppCompatActivity() {
             intent.type = "text/plain"
 
             startActivity(Intent.createChooser(intent, "Share with: "))
+
         }
 
+        /* gives the user an option to return to the main menu */
         binding.btnReturn.setOnClickListener() {
             val goToMainMenu = Intent(this, MainMenuActivity::class.java)
             startActivity(goToMainMenu)
