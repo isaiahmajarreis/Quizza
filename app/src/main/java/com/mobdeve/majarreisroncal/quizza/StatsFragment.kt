@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
+/* Modal Fragment that pulls and displays user info pulled from
+   the firebase realtime database such as total games played,
+   high score and average score */
 
 class StatsFragment : BottomSheetDialogFragment() {
     override fun onCreateView(
