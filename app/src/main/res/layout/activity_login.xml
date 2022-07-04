@@ -37,8 +37,9 @@
         android:fontFamily="@font/nunito_regular"
         android:gravity="end"
         app:layout_constraintTop_toTopOf="@id/img_wave"
-        app:layout_constraintLeft_toRightOf="@id/img_pizza"
+        app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
         />
 
     <TextView

@@ -19,7 +19,6 @@ class OptionsActivity : AppCompatActivity() {
         val user = auth.currentUser
         binding.tvEmail.text = user?.email.toString()
 
-        // TODO: back button for the action bar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Options"
 
@@ -28,5 +27,10 @@ class OptionsActivity : AppCompatActivity() {
             val goToLogin = Intent(this, LoginActivity::class.java)
             startActivity(goToLogin)
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

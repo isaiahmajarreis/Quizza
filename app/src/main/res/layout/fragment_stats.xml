@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" >
 
     <TextView
         android:id="@+id/statsText"
@@ -13,9 +13,9 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="120dp"
         android:gravity="center_horizontal"
-        android:text="Quizza Stats"
+        android:text="@string/quizza_stats"
         android:textSize="30sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/nunito"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,8 +26,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
-        android:text="Games Played: "
+        android:text="@string/games_played"
         android:textSize="20sp"
+        android:fontFamily="@font/nunito_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/statsText" />
 
@@ -37,8 +38,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:text="Average Score: "
+        android:text="@string/average_score"
         android:textSize="20sp"
+        android:fontFamily="@font/nunito_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gpText" />
 </androidx.constraintlayout.widget.ConstraintLayout>
