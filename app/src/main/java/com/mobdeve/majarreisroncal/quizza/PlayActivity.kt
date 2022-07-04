@@ -19,26 +19,15 @@ import kotlin.math.floor
 class PlayActivity : AppCompatActivity() {
     private var correctInd : Int = 0
     private var score : Int = 0
-    private var difficulty : GameDifficulty = GameDifficulty.easy // default difficulty = easy
+    private var difficulty : GameDifficulty = GameDifficulty.easy /* default difficulty = easy */
     private var token : String? = null
 
-    private val time: Long = 30     // game time in seconds
+    private val time: Long = 30     /* game time in seconds */
     private val loadQuestionsExecutor = Executors.newSingleThreadExecutor()
 
     private lateinit var clickCorrect: MediaPlayer
     private lateinit var clickWrong: MediaPlayer
     private lateinit var binding: ActivityPlayBinding
-
-    private lateinit var mushroom: SlidingAnimation
-    private lateinit var tomato: SlidingAnimation
-    private lateinit var bellPepper: SlidingAnimation
-    private lateinit var onion: SlidingAnimation
-    private lateinit var garlic: SlidingAnimation
-    private lateinit var cheese: SlidingAnimation
-    private lateinit var pepperoni: SlidingAnimation
-
-    private lateinit var timer: Timer
-    private lateinit var task: TimerTask
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,13 +38,47 @@ class PlayActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(binding.root)
 
-        animationIcons()
-
+        /* MediaPlayer sound effects for right/wrong answers */
         clickCorrect = MediaPlayer.create(this, R.raw.correct)
         clickWrong = MediaPlayer.create(this, R.raw.wrong)
 
+        /* applies animations in the background, similar to MainMenuActivity */
+        val mushroom = SlidingAnimation(binding.ivMushroom)
+        val tomato = SlidingAnimation(binding.ivTomato)
+        val bellPepper = SlidingAnimation(binding.ivBellPepper)
+        val onion = SlidingAnimation(binding.ivOnion)
+        val garlic = SlidingAnimation(binding.ivGarlic)
+        val cheese = SlidingAnimation(binding.ivCheese)
+        val pepperoni = SlidingAnimation(binding.ivPepperoni)
+
+        mushroom.initializePosition()
+        tomato.initializePosition()
+        bellPepper.initializePosition()
+        onion.initializePosition()
+        garlic.initializePosition()
+        cheese.initializePosition()
+        pepperoni.initializePosition()
+
+        val timer = Timer()
+        val task = object : TimerTask() {
+            override fun run() {
+                Handler(Looper.getMainLooper()).post {
+                    mushroom.move()
+                    tomato.move()
+                    bellPepper.move()
+                    onion.move()
+                    garlic.move()
+                    cheese.move()
+                    pepperoni.move()
+                }
+            }
+        }
+        timer.schedule(task, 0, 20)
+
+        /* calls the function which retrieves the questions and answers */
         getQnA(this)
 
+        /* initialize and execute the timer and its respective textView */
         val countdown = binding.tvTime
         var timeValue = 0
         countdown.text = time.toString()
@@ -74,40 +97,7 @@ class PlayActivity : AppCompatActivity() {
         }.start()
     }
 
-    private fun animationIcons() {
-        mushroom = SlidingAnimation(binding.ivMushroom)
-        tomato = SlidingAnimation(binding.ivTomato)
-        bellPepper = SlidingAnimation(binding.ivBellPepper)
-        onion = SlidingAnimation(binding.ivOnion)
-        garlic = SlidingAnimation(binding.ivGarlic)
-        cheese = SlidingAnimation(binding.ivCheese)
-        pepperoni = SlidingAnimation(binding.ivPepperoni)
-
-        mushroom.initializePosition()
-        tomato.initializePosition()
-        bellPepper.initializePosition()
-        onion.initializePosition()
-        garlic.initializePosition()
-        cheese.initializePosition()
-        pepperoni.initializePosition()
-
-        timer = Timer()
-        task = object : TimerTask() {
-            override fun run() {
-                Handler(Looper.getMainLooper()).post {
-                    mushroom.move()
-                    tomato.move()
-                    bellPepper.move()
-                    onion.move()
-                    garlic.move()
-                    cheese.move()
-                    pepperoni.move()
-                }
-            }
-        }
-        timer.schedule(task, 0, 20)
-    }
-
+     /* concludes the CountDownTimer object and directs the user to ScoreActivity */
     private fun timeUp() {
         window.setFlags(
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
@@ -122,8 +112,11 @@ class PlayActivity : AppCompatActivity() {
         }, 3000)
     }
 
-    fun answerClicked(view : View) {
+    /* Function for UI response when the user selects an answer,
+       the buttons' background resources are changed depending on
+       whether their index indicates they are correct or otherwise. */
 
+    fun answerClicked(view : View) {
         if(view is RadioButton) {
             var checker = false
 
@@ -182,6 +175,11 @@ class PlayActivity : AppCompatActivity() {
         }, 250)
     }
 
+    /* Retrieves the questions from the database by calling the
+       questions function in the OpenTrivia class from the
+       OpenTriviaAPI folder and assigns the indices of the
+       answers to their respective RadioButtons in the UI.*/
+
     private fun getQnA(activity : PlayActivity) {
 
         loadQuestionsExecutor.execute() {
@@ -220,6 +218,10 @@ class PlayActivity : AppCompatActivity() {
         }
     }
 
+    /* Sets the background resource of the button back to its
+       default state, this is called after the answerClicked
+       function changes the resource of a button.*/
+    
     private fun resetBtn (radio : RadioButton) {
         radio.setBackgroundResource(R.drawable.button)
         radio.isChecked = false
@@ -227,4 +229,3 @@ class PlayActivity : AppCompatActivity() {
     }
 
 }
-
