@@ -7,6 +7,9 @@ import android.widget.Toast
 import com.mobdeve.majarreisroncal.quizza.databinding.ActivityHelpBinding
 import java.util.*
 
+/**
+ * This class displays the instructions on how to play the game
+ */
 class HelpActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHelpBinding
     private lateinit var tts : TextToSpeech
@@ -19,16 +22,25 @@ class HelpActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = ""
 
+        /**
+         * onClick calls the function for text-to-speech
+         */
         binding.btnTts.setOnClickListener {
             textToSpeech()
         }
     }
 
+    /**
+     * Allows the back button of the support action bar to function
+     */
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
     }
 
+    /**
+     * Called on click of a button. Speaks the directions for the user
+     */
     private fun textToSpeech() {
         tts = TextToSpeech(applicationContext) {
             if (it == TextToSpeech.SUCCESS) {

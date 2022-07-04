@@ -6,6 +6,9 @@ import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
 import com.mobdeve.majarreisroncal.quizza.databinding.ActivityOptionsBinding
 
+/**
+ * Displays the user's email and has a button to log them out.
+ */
 class OptionsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOptionsBinding
     private lateinit var auth: FirebaseAuth
@@ -22,6 +25,9 @@ class OptionsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Options"
 
+        /**
+         * Logs out the user and returns to the login screen
+         */
         binding.tvLogout.setOnClickListener {
             auth.signOut()
             val goToLogin = Intent(this, LoginActivity::class.java)
@@ -29,6 +35,9 @@ class OptionsActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Allows the back button of the support action bar to function
+     */
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true

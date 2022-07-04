@@ -15,6 +15,10 @@ import com.google.android.gms.auth.api.identity.SignInPassword
 import com.google.firebase.auth.FirebaseAuth
 import com.mobdeve.majarreisroncal.quizza.databinding.ActivityRegisterBinding
 
+/**
+ * Activity that allows user registration.
+ * The credentials are then stored into the database.
+ */
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth
@@ -29,6 +33,9 @@ class RegisterActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         clickableText()
 
+        /**
+         * Initial checking of errors before making Firebase itself check
+         */
         binding.btnRegister.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
@@ -46,6 +53,9 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Allows only a portion of a TextView to be clickable, which leads to the LoginActivity
+     */
     private fun clickableText() {
         val spanLogin = SpannableString("Already have an account?")
         val span = object : ClickableSpan() {
@@ -61,11 +71,20 @@ class RegisterActivity : AppCompatActivity() {
         textToLogin.movementMethod = LinkMovementMethod.getInstance()
     }
 
+    /**
+     * Function for intent-ing to the LoginActivity
+     */
     private fun goToLogin() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
 
+    /**
+     * Signs up the user to the database if there are no errors
+     *
+     * @param email: a string containing the user's email address
+     * @param password: a string containing the user's password
+     */
     private fun register(email : String, password: String) {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
             if(it.isSuccessful)

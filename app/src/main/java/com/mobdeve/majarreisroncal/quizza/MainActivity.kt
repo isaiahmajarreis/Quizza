@@ -10,6 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.mobdeve.majarreisroncal.quizza.databinding.ActivityMainBinding
 
+/**
+ * A splash screen. This activity also checks whether there is a user logged in
+ * or not, and intents to the correct activity depending on the case
+ */
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
@@ -31,6 +35,9 @@ class MainActivity : AppCompatActivity() {
             else
                 Intent(this, LoginActivity::class.java)
 
+        /**
+         * Delays the intent in order to show the splash screen for a longer time
+         */
         Handler(Looper.getMainLooper()).postDelayed({
             val backgroundMp = MediaPlayer.create(this, R.raw.bg)
             backgroundMp.start()

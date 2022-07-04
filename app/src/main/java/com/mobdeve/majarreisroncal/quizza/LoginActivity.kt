@@ -13,6 +13,10 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.mobdeve.majarreisroncal.quizza.databinding.ActivityLoginBinding
 
+/**
+ * Activity for the user to login. This is the first activity to be shown right
+ * after the splash screen, given that none has been logged in
+ */
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
@@ -27,6 +31,9 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         clickableText()
 
+        /**
+         * Initial checking of errors before making Firebase itself check
+         */
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
@@ -39,6 +46,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Allows only a portion of a TextView to be clickable, which leads to the RegisterActivity
+     */
     private fun clickableText() {
         val spanRegister = SpannableString("No account yet? Register here!")
 
@@ -54,11 +64,20 @@ class LoginActivity : AppCompatActivity() {
         textToRegister.movementMethod = LinkMovementMethod.getInstance()
     }
 
+    /**
+     * Function for intent-ing to the RegisterActivity
+     */
     private fun goToRegister() {
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
     }
 
+    /**
+     * Logs the user in if there are no errors
+     *
+     * @param email: a string containing the user's email address
+     * @param password: a string containing the user's password
+     */
     private fun login(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
             if(it.isSuccessful) {

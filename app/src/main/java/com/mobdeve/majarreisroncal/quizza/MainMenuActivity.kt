@@ -10,6 +10,9 @@ import com.mobdeve.majarreisroncal.quizza.databinding.ActivityMainMenuBinding
 import java.util.*
 import kotlin.system.exitProcess
 
+/**
+ * The main menu where most of the functions can be accessed
+ */
 class MainMenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainMenuBinding
 
@@ -31,6 +34,9 @@ class MainMenuActivity : AppCompatActivity() {
 
         animationIcons()
 
+        /**
+         * Moves to the game screen
+         */
         binding.btnPlay.setOnClickListener {
             clickMp.start()
 
@@ -39,11 +45,17 @@ class MainMenuActivity : AppCompatActivity() {
             startActivity(goToCountdown)
         }
 
+        /**
+         * Displays player statistics in the form of a modal
+         */
         binding.btnStats.setOnClickListener {
             clickMp.start()
             statsFragment.show(supportFragmentManager,"BottomSheetDialog")
         }
 
+        /**
+         * Display the available options
+         */
         binding.btnOptions.setOnClickListener {
             clickMp.start()
 
@@ -51,6 +63,9 @@ class MainMenuActivity : AppCompatActivity() {
             startActivity(goToOptions)
         }
 
+        /**
+         * Displays the directions for the game
+         */
         binding.btnHelp.setOnClickListener {
             clickMp.start()
 
@@ -58,6 +73,9 @@ class MainMenuActivity : AppCompatActivity() {
             startActivity(goToHelp)
         }
 
+        /**
+         * Exits the game back to the phone's home screen
+         */
         binding.btnExit.setOnClickListener {
             clickMp.start()
 
@@ -66,6 +84,9 @@ class MainMenuActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Initializes and loops the animation without starving other processes
+     */
     private fun animationIcons() {
         mushroom = SlidingAnimation(binding.ivMushroom)
         tomato = SlidingAnimation(binding.ivTomato)

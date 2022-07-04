@@ -13,6 +13,9 @@ import java.util.concurrent.Executors
 
 const val EXTRA_MESSAGE_TOKEN = "com.mobdeve.majarreisroncal.quizza.msg.token"
 
+/**
+ * Shown before the actual game start in order to simulate a countdown
+ */
 class CountdownActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCountdownBinding
     private val loadTokenExecutor = Executors.newSingleThreadExecutor()
@@ -27,8 +30,12 @@ class CountdownActivity : AppCompatActivity() {
 
         val time : Long = 3
         val timer = binding.tvCountdown
-        var timeText = 0
+        var timeText: Int
 
+        /**
+         * This allows the countdown to be shown. Once the timer reaches 0,
+         * the activity switches to the PlayActivity
+         */
         object : CountDownTimer(time * 1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 timeText = millisUntilFinished.toInt() / 1000 + 1
@@ -41,6 +48,9 @@ class CountdownActivity : AppCompatActivity() {
         }.start()
     }
 
+    /**
+     * Loads the token which is necessary for the game to work
+     */
     private fun loadToken() {
         loadTokenExecutor.execute {
             try {
@@ -53,6 +63,9 @@ class CountdownActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Function that switches from the CountdownActivity to the PlayActivity
+     */
     private fun intentToPlay() {
         Handler(Looper.getMainLooper()).postDelayed({
             val play = PlayActivity::class.java
