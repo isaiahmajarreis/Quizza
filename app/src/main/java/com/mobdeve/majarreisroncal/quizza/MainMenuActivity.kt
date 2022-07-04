@@ -13,6 +13,14 @@ import kotlin.system.exitProcess
 class MainMenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainMenuBinding
 
+    private lateinit var mushroom: SlidingAnimation
+    private lateinit var tomato: SlidingAnimation
+    private lateinit var bellPepper: SlidingAnimation
+    private lateinit var onion: SlidingAnimation
+    private lateinit var garlic: SlidingAnimation
+    private lateinit var cheese: SlidingAnimation
+    private lateinit var pepperoni: SlidingAnimation
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
@@ -21,35 +29,7 @@ class MainMenuActivity : AppCompatActivity() {
         val statsFragment = StatsFragment()
         val clickMp = MediaPlayer.create(this, R.raw.buttonclick)
 
-        val mushroom = SlidingAnimation(binding.ivMushroom)
-        val tomato = SlidingAnimation(binding.ivTomato)
-        val bellPepper = SlidingAnimation(binding.ivBellPepper)
-        val onion = SlidingAnimation(binding.ivOnion)
-        val garlic = SlidingAnimation(binding.ivGarlic)
-        val cheese = SlidingAnimation(binding.ivCheese)
-        val pepperoni = SlidingAnimation(binding.ivPepperoni)
-
-        mushroom.initializePosition()
-        tomato.initializePosition()
-        bellPepper.initializePosition()
-        onion.initializePosition()
-        garlic.initializePosition()
-        cheese.initializePosition()
-        pepperoni.initializePosition()
-
-        Timer().schedule(object : TimerTask() {
-            override fun run() {
-                Handler(Looper.getMainLooper()).post {
-                    mushroom.move()
-                    tomato.move()
-                    bellPepper.move()
-                    onion.move()
-                    garlic.move()
-                    cheese.move()
-                    pepperoni.move()
-                }
-            }
-        }, 0, 20)
+        animationIcons()
 
         binding.btnPlay.setOnClickListener {
             clickMp.start()
@@ -81,9 +61,40 @@ class MainMenuActivity : AppCompatActivity() {
         binding.btnExit.setOnClickListener {
             clickMp.start()
 
-            // TODO: dialog popup alert on click ("Are you sure you want to exit the game?")
             moveTaskToBack(true)
             exitProcess(-1)
         }
+    }
+
+    private fun animationIcons() {
+        mushroom = SlidingAnimation(binding.ivMushroom)
+        tomato = SlidingAnimation(binding.ivTomato)
+        bellPepper = SlidingAnimation(binding.ivBellPepper)
+        onion = SlidingAnimation(binding.ivOnion)
+        garlic = SlidingAnimation(binding.ivGarlic)
+        cheese = SlidingAnimation(binding.ivCheese)
+        pepperoni = SlidingAnimation(binding.ivPepperoni)
+
+        mushroom.initializePosition()
+        tomato.initializePosition()
+        bellPepper.initializePosition()
+        onion.initializePosition()
+        garlic.initializePosition()
+        cheese.initializePosition()
+        pepperoni.initializePosition()
+
+        Timer().schedule(object : TimerTask() {
+            override fun run() {
+                Handler(Looper.getMainLooper()).post {
+                    mushroom.move()
+                    tomato.move()
+                    bellPepper.move()
+                    onion.move()
+                    garlic.move()
+                    cheese.move()
+                    pepperoni.move()
+                }
+            }
+        }, 0, 20)
     }
 }

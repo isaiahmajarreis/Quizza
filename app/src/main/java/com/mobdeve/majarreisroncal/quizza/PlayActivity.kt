@@ -29,6 +29,17 @@ class PlayActivity : AppCompatActivity() {
     private lateinit var clickWrong: MediaPlayer
     private lateinit var binding: ActivityPlayBinding
 
+    private lateinit var mushroom: SlidingAnimation
+    private lateinit var tomato: SlidingAnimation
+    private lateinit var bellPepper: SlidingAnimation
+    private lateinit var onion: SlidingAnimation
+    private lateinit var garlic: SlidingAnimation
+    private lateinit var cheese: SlidingAnimation
+    private lateinit var pepperoni: SlidingAnimation
+
+    private lateinit var timer: Timer
+    private lateinit var task: TimerTask
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPlayBinding.inflate(layoutInflater)
@@ -38,40 +49,10 @@ class PlayActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(binding.root)
 
+        animationIcons()
+
         clickCorrect = MediaPlayer.create(this, R.raw.correct)
         clickWrong = MediaPlayer.create(this, R.raw.wrong)
-
-        val mushroom = SlidingAnimation(binding.ivMushroom)
-        val tomato = SlidingAnimation(binding.ivTomato)
-        val bellPepper = SlidingAnimation(binding.ivBellPepper)
-        val onion = SlidingAnimation(binding.ivOnion)
-        val garlic = SlidingAnimation(binding.ivGarlic)
-        val cheese = SlidingAnimation(binding.ivCheese)
-        val pepperoni = SlidingAnimation(binding.ivPepperoni)
-
-        mushroom.initializePosition()
-        tomato.initializePosition()
-        bellPepper.initializePosition()
-        onion.initializePosition()
-        garlic.initializePosition()
-        cheese.initializePosition()
-        pepperoni.initializePosition()
-
-        val timer = Timer()
-        val task = object : TimerTask() {
-            override fun run() {
-                Handler(Looper.getMainLooper()).post {
-                    mushroom.move()
-                    tomato.move()
-                    bellPepper.move()
-                    onion.move()
-                    garlic.move()
-                    cheese.move()
-                    pepperoni.move()
-                }
-            }
-        }
-        timer.schedule(task, 0, 20)
 
         getQnA(this)
 
@@ -91,6 +72,40 @@ class PlayActivity : AppCompatActivity() {
                 timeUp()
             }
         }.start()
+    }
+
+    private fun animationIcons() {
+        mushroom = SlidingAnimation(binding.ivMushroom)
+        tomato = SlidingAnimation(binding.ivTomato)
+        bellPepper = SlidingAnimation(binding.ivBellPepper)
+        onion = SlidingAnimation(binding.ivOnion)
+        garlic = SlidingAnimation(binding.ivGarlic)
+        cheese = SlidingAnimation(binding.ivCheese)
+        pepperoni = SlidingAnimation(binding.ivPepperoni)
+
+        mushroom.initializePosition()
+        tomato.initializePosition()
+        bellPepper.initializePosition()
+        onion.initializePosition()
+        garlic.initializePosition()
+        cheese.initializePosition()
+        pepperoni.initializePosition()
+
+        timer = Timer()
+        task = object : TimerTask() {
+            override fun run() {
+                Handler(Looper.getMainLooper()).post {
+                    mushroom.move()
+                    tomato.move()
+                    bellPepper.move()
+                    onion.move()
+                    garlic.move()
+                    cheese.move()
+                    pepperoni.move()
+                }
+            }
+        }
+        timer.schedule(task, 0, 20)
     }
 
     private fun timeUp() {

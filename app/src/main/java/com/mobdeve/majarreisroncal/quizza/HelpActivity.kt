@@ -20,30 +20,34 @@ class HelpActivity : AppCompatActivity() {
         supportActionBar?.title = ""
 
         binding.btnTts.setOnClickListener {
-            tts = TextToSpeech(applicationContext) {
-                if (it == TextToSpeech.SUCCESS) {
-                    tts.language = Locale.US
-                    tts.setSpeechRate(1.0f)
-                    tts.speak(
-                        binding.tvDirections.text.toString(),
-                        TextToSpeech.QUEUE_ADD,
-                        null,
-                        null
-                    )
-                }
-                else {
-                    Toast.makeText(
-                        this,
-                        "Text-to-Speech failed. Please try again.",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-            }
+            textToSpeech()
         }
     }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    private fun textToSpeech() {
+        tts = TextToSpeech(applicationContext) {
+            if (it == TextToSpeech.SUCCESS) {
+                tts.language = Locale.US
+                tts.setSpeechRate(1.0f)
+                tts.speak(
+                    binding.tvDirections.text.toString(),
+                    TextToSpeech.QUEUE_ADD,
+                    null,
+                    null
+                )
+            }
+            else {
+                Toast.makeText(
+                    this,
+                    "Text-to-Speech failed. Please try again.",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 }
