@@ -5,13 +5,14 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.mobdeve.majarreisroncal.quizza.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,14 +21,23 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         Toast.makeText(this, "Connected to Firebase!", Toast.LENGTH_LONG).show()
+        auth = FirebaseAuth.getInstance()
+
+        lateinit var intent: Intent
+        val currentUser = auth.currentUser
+
+        intent =
+            if(currentUser != null)
+                Intent(this, MainMenuActivity::class.java)
+            else
+                Intent(this, LoginActivity::class.java)
 
         Handler(Looper.getMainLooper()).postDelayed({
             val backgroundMp = MediaPlayer.create(this, R.raw.bg)
             backgroundMp.start()
             backgroundMp.isLooping = true
 
-            val goToAccount = Intent(this, LoginActivity::class.java)
-            startActivity(goToAccount)
+            startActivity(intent)
         }, 5000)
     }
 

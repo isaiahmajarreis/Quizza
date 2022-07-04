@@ -11,10 +11,12 @@ import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.mobdeve.majarreisroncal.quizza.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +25,38 @@ class RegisterActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         supportActionBar?.hide()
 
-        val spanLogin = SpannableString("Already have an account?")
+        auth = FirebaseAuth.getInstance()
+        clickableText()
 
+        binding.btnRegister.setOnClickListener {
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
+            val confirm = binding.etConfirm.text.toString()
+
+            if(email.isNotEmpty() && password.isNotEmpty() && confirm.isNotEmpty()) {
+
+                if(password == confirm) {
+                    auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+                        if(it.isSuccessful)
+                            goToLogin()
+                        else
+                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_LONG).show()
+                    }
+                }
+
+                else {
+                    Toast.makeText(this, "Passwords do not match!", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            else {
+                Toast.makeText(this, "Please fill all blank spaces.", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun clickableText() {
+        val spanLogin = SpannableString("Already have an account?")
         val span = object : ClickableSpan() {
             override fun onClick(p0: View) {
                 goToLogin()
@@ -36,20 +68,6 @@ class RegisterActivity : AppCompatActivity() {
         val textToLogin = binding.tvToLogin
         textToLogin.text = spanLogin
         textToLogin.movementMethod = LinkMovementMethod.getInstance()
-
-        binding.btnRegister.setOnClickListener {
-            val username = binding.etUsername.text
-            val password = binding.etPassword.text
-            val confirm = binding.etConfirm.text
-
-            if(password.toString() == (confirm.toString())) {
-                // TODO: implement addition of account to firebase
-                goToLogin()
-            }
-            else {
-                Toast.makeText(this, "Passwords do not match!", Toast.LENGTH_LONG).show()
-            }
-        }
     }
 
     private fun goToLogin() {
