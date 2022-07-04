@@ -1,36 +1,30 @@
 package com.mobdeve.majarreisroncal.quizza
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import com.mobdeve.majarreisroncal.quizza.databinding.FragmentLoginBinding
+import com.mobdeve.majarreisroncal.quizza.databinding.ActivityLoginBinding
 
-class LoginFragment : Fragment() {
-    private lateinit var binding: FragmentLoginBinding
+class LoginActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = FragmentLoginBinding.inflate(layoutInflater)
-    }
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        supportActionBar?.hide()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
         val goToRegister = SpannableString("No account yet? Register here!")
 
         val span = object : ClickableSpan() {
             override fun onClick(p0: View) {
-                activity?.supportFragmentManager?.beginTransaction()
-                    ?.replace(R.id.frag_account, RegisterFragment())
-                    ?.commit()
+                goToRegister()
             }
         }
 
@@ -40,11 +34,13 @@ class LoginFragment : Fragment() {
         textToRegister.movementMethod = LinkMovementMethod.getInstance()
 
         binding.btnLogin.setOnClickListener {
-            val goToMainMenu = Intent(activity, MainMenuActivity::class.java)
-            activity?.startActivity(goToMainMenu)
+            val goToMainMenu = Intent(this, MainMenuActivity::class.java)
+            startActivity(goToMainMenu)
         }
-
-        return binding.root
     }
 
+    private fun goToRegister() {
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
+    }
 }

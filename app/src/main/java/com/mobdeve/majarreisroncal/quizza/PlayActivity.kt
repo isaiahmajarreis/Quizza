@@ -22,7 +22,7 @@ class PlayActivity : AppCompatActivity() {
     private var difficulty : GameDifficulty = GameDifficulty.easy // default difficulty = easy
     private var token : String? = null
 
-    private val time: Long = 30
+    private val time: Long = 30     // game time in seconds
     private val loadQuestionsExecutor = Executors.newSingleThreadExecutor()
 
     private lateinit var clickCorrect: MediaPlayer
@@ -34,6 +34,7 @@ class PlayActivity : AppCompatActivity() {
         binding = ActivityPlayBinding.inflate(layoutInflater)
         difficulty = GameDifficulty.easy
         token = intent.getStringExtra(EXTRA_MESSAGE_TOKEN)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         supportActionBar?.hide()
         setContentView(binding.root)
 
@@ -76,6 +77,7 @@ class PlayActivity : AppCompatActivity() {
 
         val countdown = binding.tvTime
         var timeValue = 0
+        countdown.text = time.toString()
 
         object : CountDownTimer(time * 1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -105,36 +107,30 @@ class PlayActivity : AppCompatActivity() {
         }, 3000)
     }
 
-    fun answerClicked(view : View)
-    {
-        if(view is RadioButton)
-        {
-            val isChecked = view.isChecked
+    fun answerClicked(view : View) {
+
+        if(view is RadioButton) {
             var checker = false
 
-            when(view.id)
-            {
+            when(view.id) {
                 R.id.answer0 -> {
                     if(correctInd == 0)
                         checker = true
                     else
                         binding.answer0.setBackgroundResource(R.drawable.button_wrong)
                 }
-
                 R.id.answer1 -> {
                     if(correctInd == 1)
                         checker = true
                     else
                         binding.answer1.setBackgroundResource(R.drawable.button_wrong)
                 }
-
                 R.id.answer2 -> {
                     if(correctInd == 2)
                         checker = true
                     else
                         binding.answer2.setBackgroundResource(R.drawable.button_wrong)
                 }
-
                 R.id.answer3 -> {
                     if(correctInd == 3)
                         checker = true
@@ -143,8 +139,7 @@ class PlayActivity : AppCompatActivity() {
                 }
             }
 
-            when(correctInd)
-            {
+            when(correctInd) {
                 0 -> binding.answer0.setBackgroundResource(R.drawable.button_green)
                 1 -> binding.answer1.setBackgroundResource(R.drawable.button_green)
                 2 -> binding.answer2.setBackgroundResource(R.drawable.button_green)
@@ -170,16 +165,12 @@ class PlayActivity : AppCompatActivity() {
             resetBtn(binding.answer2)
             resetBtn(binding.answer3)
         }, 250)
-
-
     }
 
-    private fun getQnA(activity : PlayActivity)
-    {
-        loadQuestionsExecutor.execute()
-        {
-            try
-            {
+    private fun getQnA(activity : PlayActivity) {
+
+        loadQuestionsExecutor.execute() {
+            try {
                 val ans = OpenTrivia().questions(difficulty, token)
 
                 activity.runOnUiThread {
@@ -209,15 +200,12 @@ class PlayActivity : AppCompatActivity() {
                     } else {
                         ans.wrongAns[i++]
                     }
-
                 }
             } catch (e: Exception) {}
         }
-
     }
 
-    private fun resetBtn (radio : RadioButton)
-    {
+    private fun resetBtn (radio : RadioButton) {
         radio.setBackgroundResource(R.drawable.button)
         radio.isChecked = false
         radio.isEnabled = true

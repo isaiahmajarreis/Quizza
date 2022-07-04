@@ -58,5 +58,6 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="register">Register</string>
     <string name="register_to_login">Already have an account?</string>
+    <string name="email_address">Email</string>
 
 </resources>
