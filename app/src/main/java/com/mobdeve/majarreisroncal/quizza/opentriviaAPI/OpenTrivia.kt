@@ -5,6 +5,11 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
 
+/* This class is for the connection and retrieval of questions
+   from the database, and the generation of a unique token,
+   which is required by the database to generate trivia questions
+   to our specifications. */
+
 class OpenTrivia{
     private val openTriviaURL = "https://opentdb.com/api.php"
     private val okHttpClient : OkHttpClient = OkHttpClient()
