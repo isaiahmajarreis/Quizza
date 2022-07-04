@@ -11,6 +11,7 @@ import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.Toast
+import com.google.android.gms.auth.api.identity.SignInPassword
 import com.google.firebase.auth.FirebaseAuth
 import com.mobdeve.majarreisroncal.quizza.databinding.ActivityRegisterBinding
 
@@ -34,21 +35,11 @@ class RegisterActivity : AppCompatActivity() {
             val confirm = binding.etConfirm.text.toString()
 
             if(email.isNotEmpty() && password.isNotEmpty() && confirm.isNotEmpty()) {
-
-                if(password == confirm) {
-                    auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-                        if(it.isSuccessful)
-                            goToLogin()
-                        else
-                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_LONG).show()
-                    }
-                }
-
-                else {
+                if(password == confirm)
+                    register(email, password)
+                else
                     Toast.makeText(this, "Passwords do not match!", Toast.LENGTH_LONG).show()
-                }
             }
-
             else {
                 Toast.makeText(this, "Please fill all blank spaces.", Toast.LENGTH_LONG).show()
             }
@@ -73,5 +64,14 @@ class RegisterActivity : AppCompatActivity() {
     private fun goToLogin() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun register(email : String, password: String) {
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+            if(it.isSuccessful)
+                goToLogin()
+            else
+                Toast.makeText(this, it.exception.toString(), Toast.LENGTH_LONG).show()
+        }
     }
 }

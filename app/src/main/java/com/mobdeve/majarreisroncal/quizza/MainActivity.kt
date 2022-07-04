@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        Toast.makeText(this, "Connected to Firebase!", Toast.LENGTH_LONG).show()
         auth = FirebaseAuth.getInstance()
 
         lateinit var intent: Intent

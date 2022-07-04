@@ -5,7 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HelpActivity"
-    android:background="@color/yellow">
+    android:background="@color/yellow"
+    android:padding="15dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_tts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:icon="@drawable/ic_voice"
+        app:iconTint="@color/black"
+        app:iconSize="50dp"
+        app:layout_constraintBottom_toTopOf="@id/how"
+        style="@style/Widget.Material3.Button.IconButton"
+        app:strokeColor="@color/white"
+        app:strokeWidth="1dp"
+        />
 
     <TextView
         android:id="@+id/how"
@@ -23,19 +40,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:id="@+id/tv_directions"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="28dp"
         android:text="@string/instructions"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:fontFamily="@font/nunito_regular"
-        android:textSize="23sp"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMaxTextSize="24sp"
+        android:autoSizeMinTextSize="16sp"
         android:gravity="center"
         android:paddingHorizontal="50dp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/how" />
+        app:layout_constraintTop_toBottomOf="@id/how"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:targetApi="o" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
